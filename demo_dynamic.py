@@ -17,4 +17,5 @@ import pandas as pd
 resp = requests.get(f"{BASE}/api/products")
 df = pd.DataFrame(resp.json())
 print(f"Total extraídos: {len(df)} productos")
+df.to_csv("productos_dynamic.csv", index=False)
 df
