@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: sentinel-demo
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    runtime: python311

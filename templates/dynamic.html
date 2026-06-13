@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Tienda Dinámica{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex items-center justify-between mb-6">
+        <div>
+            <h1 class="text-2xl font-bold">Tienda Dinámica</h1>
+            <p class="text-gray-400 text-sm mt-1">Productos cargados vía JavaScript &mdash; revisa el código fuente para ver la diferencia.</p>
+        </div>
+        <span class="text-sm text-gray-500" id="result-count"></span>
+    </div>
+
+    <!-- Category tabs -->
+    <div class="flex gap-2 mb-6 flex-wrap" id="category-tabs"></div>
+
+    <!-- Search -->
+    <div class="mb-8 flex gap-2">
+        <input type="text" id="search-input" placeholder="Buscar productos..."
+               class="w-full md:w-96 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400
+                      focus:outline-none focus:border-blue-500 transition-colors text-sm">
+        <button onclick="doSearch()"
+                class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white text-sm font-medium transition-colors">
+            Buscar
+        </button>
+        <button onclick="clearSearch()" id="clear-btn"
+                class="hidden px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg text-gray-300 text-sm font-medium transition-colors">
+            Limpiar
+        </button>
+    </div>
+
+    <!-- Product grid -->
+    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <p class="text-gray-400 col-span-full text-center py-12">Cargando productos&hellip;</p>
+    </div>
+
+    <!-- Pagination -->
+    <div id="pagination" class="flex justify-center items-center gap-1 mt-10"></div>
+</div>
+
+<script src="{{ url_for('static', filename='store.js') }}"></script>
+{% endblock %}

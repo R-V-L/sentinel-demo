@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto px-4 py-16">
+    <div class="text-center mb-12">
+        <h1 class="text-3xl font-bold tracking-tight">Tienda Sentinel Demo</h1>
+        <p class="text-gray-400 mt-2 text-lg">Tres tiendas, mismos productos, diferentes implementaciones.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="/simple/"
+           class="group bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:shadow-lg hover:shadow-green-500/10">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="text-xs font-bold px-2 py-0.5 rounded bg-green-900 text-green-300 uppercase tracking-wide">Fácil</span>
+            </div>
+            <h2 class="text-lg font-semibold text-white group-hover:text-green-400 transition-colors">Tienda Simple</h2>
+            <p class="text-gray-400 text-sm mt-2 leading-relaxed">HTML renderizado en servidor. Todos los datos están en etiquetas planas. Sin protección.</p>
+        </a>
+
+        <a href="/guard/"
+           class="group bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-yellow-500 transition-all hover:shadow-lg hover:shadow-yellow-500/10">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="text-xs font-bold px-2 py-0.5 rounded bg-yellow-900 text-yellow-300 uppercase tracking-wide">Medio</span>
+            </div>
+            <h2 class="text-lg font-semibold text-white group-hover:text-yellow-400 transition-colors">Tienda Protegida</h2>
+            <p class="text-gray-400 text-sm mt-2 leading-relaxed">Mismo HTML, pero requiere cabeceras de navegador válidas — User-Agent, Accept y Accept-Language. Sin límite de peticiones.</p>
+        </a>
+
+        <a href="/dynamic/"
+           class="group bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-red-500 transition-all hover:shadow-lg hover:shadow-red-500/10">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-900 text-red-300 uppercase tracking-wide">Difícil</span>
+            </div>
+            <h2 class="text-lg font-semibold text-white group-hover:text-red-400 transition-colors">Tienda Dinámica</h2>
+            <p class="text-gray-400 text-sm mt-2 leading-relaxed">Productos cargados vía JavaScript desde una API JSON. HTML vacío sin JS.</p>
+        </a>
+    </div>
+
+    <div class="mt-12 p-6 bg-gray-800 rounded-xl border border-gray-700">
+        <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3">Comparación Rápida</h3>
+        <table class="w-full text-sm">
+            <thead>
+                <tr class="text-left text-gray-400 border-b border-gray-700">
+                    <th class="py-2 font-medium">Nivel</th>
+                    <th class="py-2 font-medium">Datos</th>
+                    <th class="py-2 font-medium">Protección</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-300">
+                <tr class="border-b border-gray-700/50">
+                    <td class="py-2"><span class="text-green-400 font-medium">Simple</span></td>
+                    <td class="py-2">HTML directo</td>
+                    <td class="py-2">Ninguna</td>
+                </tr>
+                <tr class="border-b border-gray-700/50">
+                    <td class="py-2"><span class="text-yellow-400 font-medium">Protegida</span></td>
+                    <td class="py-2">HTML directo</td>
+                    <td class="py-2">Cabeceras de navegador</td>
+                </tr>
+                <tr>
+                    <td class="py-2"><span class="text-red-400 font-medium">Dinámica</span></td>
+                    <td class="py-2">JSON vía fetch</td>
+                    <td class="py-2">Requiere JavaScript</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
