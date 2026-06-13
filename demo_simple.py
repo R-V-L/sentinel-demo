@@ -29,4 +29,5 @@ for page in range(1, total_paginas + 1):
         })
 
 df = pd.DataFrame(productos)
-df.head()
+print(f"Total extraídos: {len(df)} productos")
+df

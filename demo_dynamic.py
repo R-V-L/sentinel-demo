@@ -16,4 +16,5 @@ import pandas as pd
 
 resp = requests.get(f"{BASE}/api/products")
 df = pd.DataFrame(resp.json())
-df.head()
+print(f"Total extraídos: {len(df)} productos")
+df
