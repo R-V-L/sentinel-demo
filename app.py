@@ -72,7 +72,7 @@ def _list_view(prefix):
     filtered = get_products(category, search)
     total = len(filtered)
     total_pages = max(1, (total + per_page - 1) // per_page)
-    page = max(1, page)
+    page = max(1, min(page, total_pages))
     start = (page - 1) * per_page
     page_products = filtered[start:start + per_page]
 
