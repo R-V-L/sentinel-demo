@@ -4,23 +4,23 @@
 # Celda 2
 import requests
 import pandas as pd
+import math
 from bs4 import BeautifulSoup
 
 BASE = "https://rivazql.pythonanywhere.com/simple"
-MAX_PAGES = 1
+
+resp = requests.get(f"{BASE}/")
+soup = BeautifulSoup(resp.text, "html.parser")
+
+total_text = soup.find("span", class_="text-gray-500").text
+total_productos = int(total_text.split()[-2])
+total_paginas = math.ceil(total_productos / 12)
 
 productos = []
-page = 1
-
-while True:
+for page in range(1, total_paginas + 1):
     resp = requests.get(f"{BASE}/?page={page}")
     soup = BeautifulSoup(resp.text, "html.parser")
-    cards = soup.select("a[href*='/simple/product/']")
-
-    if not cards:
-        break
-
-    for card in cards:
+    for card in soup.select("a[href*='/simple/product/']"):
         productos.append({
             "nombre": card.select_one("h3").text.strip(),
             "precio": card.select_one("p.text-xl").text.strip(),
@@ -28,11 +28,5 @@ while True:
             "stock":  "En stock" in card.select_one("span.rounded-full").text,
         })
 
-    if MAX_PAGES and page >= MAX_PAGES:
-        break
-
-    page += 1
-
 df = pd.DataFrame(productos)
-print(f"Extraídos: {len(df)} productos")
-df.head(10)
+df.head()

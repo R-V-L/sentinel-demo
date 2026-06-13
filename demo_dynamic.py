@@ -15,8 +15,5 @@ print(f"Productos en el HTML: {len(cards)}")
 import pandas as pd
 
 resp = requests.get(f"{BASE}/api/products")
-data = resp.json()
-df = pd.DataFrame(data)
-
-print(f"Productos en la API: {len(df)}")
-df.head(10)
+df = pd.DataFrame(resp.json())
+df.head()
